@@ -25,5 +25,4 @@ for coloana in var.data.columns:
 		})
 
 data_missing = pd.DataFrame(info_missing)
-
-print(data_missing)
+var.data_missing = data_missing
