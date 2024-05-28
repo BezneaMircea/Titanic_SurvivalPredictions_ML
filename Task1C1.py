@@ -1,71 +1,37 @@
-import csv
-from utils import det_list_type
-from utils import are_there_duplicates
-import variables
+import pandas as pd
+import variables as var
+# Citirea datelor
+data = pd.read_csv('train.csv')
 
-# PassengerId = []
-# Survived = []
-# Pclass = []
-# Name = []
-# Sex = []
-# Age = []
-# SibSp = []
-# Parch = []
-# Ticket = []
-# Fare = []
-# Cabin = []
-# Embarked = []
-with open("train.csv", 'r') as file:
-	reader = csv.reader(file, delimiter=",")
-	header = next(reader)
-	variables.column_nr = len(header)
-	variables.nr_lines = 0
-	# Avem nr de coloane
-	for row in reader:
-		variables.PassengerId.append(row[0])
-		variables.Survived.append(row[1])
-		variables.Pclass.append(row[2])
-		variables.Name.append(row[3])
-		variables.Sex.append(row[4])
-		variables.Age.append(row[5])
-		variables.SibSp.append(row[6])
-		variables.Parch.append(row[7])
-		variables.Ticket.append(row[8])
-		variables.Fare.append(row[9])
-		variables.Cabin.append(row[10])
-		variables.Embarked.append(row[11])
-		variables.nr_lines += 1
-	# Avem numarul de linii
+var.data = data
 
-	variables.PassengerId_missing_count = len([item for item in variables.PassengerId if item == ''])
-	variables.Survived_missing_count = len([item for item in variables.Survived if item == ''])
-	variables.Pclass_missing_count = len([item for item in variables.Pclass if item == ''])
-	variables.Name_missing_count = len([item for item in variables.Name if item == ''])
-	variables.Sex_missing_count = len([item for item in variables.Sex if item == ''])
-	variables.Age_missing_count = len([item for item in variables.Age if item == ''])
-	variables.SibSp_missing_count = len([item for item in variables.SibSp if item == ''])
-	variables.Parch_missing_count = len([item for item in variables.Parch if item == ''])
-	variables.Ticket_missing_count = len([item for item in variables.Ticket if item == ''])
-	variables.Fare_missing_count = len([item for item in variables.Fare if item == ''])
-	variables.Cabin_missing_count = len([item for item in variables.Cabin if item == ''])
-	variables.Embarked_missing_count = len([item for item in variables.Embarked if item == ''])
-	# Aflam cate elemente lipsesc din fiecare coloana
+var.nr_lines = data.shape[0]
+var.column_nr = data.shape[1]
 
-	variables.PassengerId_type = det_list_type(variables.PassengerId)
-	variables.Survived_type = det_list_type(variables.Survived)
-	variables.Pclass_type = det_list_type(variables.Pclass)
-	variables.Name_type = det_list_type(variables.Name)
-	variables.Sex_type = det_list_type(variables.Sex)
-	variables.Age_type = det_list_type(variables.Age)
-	variables.SibSp_type = det_list_type(variables.SibSp)
-	variables.Parch_type = det_list_type(variables.Parch)
-	variables.Ticket_type = det_list_type(variables.Ticket)
-	variables.Fare_type = det_list_type(variables.Fare)
-	variables.Cabin_type = det_list_type(variables.Cabin)
-	variables.Embarked_type = det_list_type(variables.Embarked)
-	# Avem tipul listelor
-	
-	# Deoarece Id-ul pasagerului este unic, este suficient pentru a verifica
-	# daca exista duplicate sa vedem daca exista duplicate in lista id-urilor
-	variables.found_duplicates = are_there_duplicates(variables.PassengerId)
-	
+var.PassengerId_type = data['PassengerId'].dtypes
+var.Survived_type = data['Survived'].dtypes
+var.Pclass_type = data['Pclass'].dtypes
+var.Name_type = data['Name'].dtypes
+var.Sex_type = data['Sex'].dtypes
+var.Age_type = data['Age'].dtypes
+var.SibSp_type = data['SibSp'].dtypes
+var.Parch_type = data['Parch'].dtypes
+var.Ticket_type = data['Ticket'].dtypes
+var.Fare_type = data['Fare'].dtypes
+var.Cabin_type = data['Cabin'].dtypes
+var.Embarked_type = data['Embarked'].dtypes
+
+var.PassengerId_missing_count = data['PassengerId'].isna().sum()
+var.Survived_missing_count = data['Survived'].isna().sum()
+var.Pclass_missing_count = data['Pclass'].isna().sum()
+var.Name_missing_count = data['Name'].isna().sum()
+var.Sex_missing_count = data['Sex'].isna().sum()
+var.Age_missing_count = data['Age'].isna().sum()
+var.SibSp_missing_count = data['SibSp'].isna().sum()
+var.Parch_missing_count = data['Parch'].isna().sum()
+var.Ticket_missing_count = data['Ticket'].isna().sum()
+var.Fare_missing_count = data['Fare'].isna().sum()
+var.Cabin_missing_count = data['Cabin'].isna().sum()
+var.Embarked_missing_count = data['Embarked'].isna().sum()
+
+var.found_duplicates = data.duplicated().sum()
