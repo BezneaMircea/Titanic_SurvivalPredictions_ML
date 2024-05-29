@@ -28,3 +28,4 @@ Embarked_type = 0
 found_duplicates = 0
 no_outliers_df = 0
 no_outliers_df_and_Z = 0
+data_missing = 0
