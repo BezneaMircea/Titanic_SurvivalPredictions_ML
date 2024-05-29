@@ -10,7 +10,6 @@ def destroy_outliers(df, coloana):
 	sup_lim = percentile_Q3 + 1.5 * IQR
 
 	no_outliers = df[(df[coloana] >= inf_lim) & (df[coloana] <= sup_lim)]
-	
 	var.no_outliers_df = no_outliers
 
 def destroy_outliers_with_z(df, coloana):
