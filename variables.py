@@ -29,3 +29,5 @@ found_duplicates = 0
 no_outliers_df = 0
 no_outliers_df_and_Z = 0
 data_missing = 0
+training_set = 0
+testing_set = 0
