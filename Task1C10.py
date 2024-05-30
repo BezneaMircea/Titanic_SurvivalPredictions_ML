@@ -18,7 +18,6 @@ for line in var.data.iterrows():
 alone_survived_df = pd.DataFrame(alone_survived)
 alone_not_survived_df = pd.DataFrame(alone_not_survived)
 
-sns.histplot(data=alone_survived_df , x='Survived', hue='Alone_Status', multiple='stack')
 plt.show()
 
 data_subset = var.data.head(100)
