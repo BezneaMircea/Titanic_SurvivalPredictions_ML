@@ -32,6 +32,6 @@ plt.bar('Very young male survived', male_survived_very_young_people.shape[0], la
 plt.bar('Young male survived', male_survived_young_people.shape[0], label='Young male survived')
 plt.bar('Middle Aged male survived', male_survived_middle_aged.shape[0], label='Middle Aged male survived')
 plt.bar('Old male survived', male_survived_old_people.shape[0], label='Old male survived')
-plt.show()
+plt.savefig('Survivers_by_age.png')
 
 data_variables.close()

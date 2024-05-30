@@ -7,6 +7,8 @@ import seaborn as sns
 
 alone_survived = []
 alone_not_survived = []
+not_alone_survived = []
+not_alone_not_survived = []
 
 for line in var.data.iterrows():
 	if var.data['SibSp'][line[0]] == 0 and var.data['Parch'][line[0]] == 0:
@@ -14,11 +16,16 @@ for line in var.data.iterrows():
 			alone_survived.append(var.data.loc[line[0]])
 		else:
 			alone_not_survived.append(var.data.loc[line[0]])
+	else:
+		if var.data['Survived'][line[0]] == 1:
+			not_alone_survived.append(var.data.loc[line[0]])
+		else:
+			not_alone_not_survived.append(var.data.loc[line[0]])
 
 alone_survived_df = pd.DataFrame(alone_survived)
 alone_not_survived_df = pd.DataFrame(alone_not_survived)
-
-plt.show()
+not_alone_survived_df = pd.DataFrame(not_alone_survived)
+not_alone_not_survived_df = pd.DataFrame(not_alone_not_survived)
 
 data_subset = var.data.head(100)
 

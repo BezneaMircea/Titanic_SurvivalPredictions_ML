@@ -18,4 +18,5 @@ plt.bar('Male', percentage_gender['male'], label='Male')
 plt.bar('Female', percentage_gender['female'], label='Female')
 
 plt.ylabel('Percentage')
-plt.show()
+plt.ylim(0, 70)
+plt.savefig('General_statistics.png')
