@@ -1,8 +1,11 @@
 import pandas as pd
 import numpy as np
 import variables as var
+import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import log_loss
+from sklearn.metrics import confusion_matrix
 
 data = pd.read_csv('No_outliers_df_and_Z.csv')
 
@@ -39,6 +42,8 @@ var.no_outliers_df_and_Z.loc[var.no_outliers_df_and_Z['Embarked'] == 'S', 'Embar
 var.no_outliers_df_and_Z.loc[var.no_outliers_df_and_Z['Embarked'] == 'C', 'Embarked'] = 2
 var.no_outliers_df_and_Z.loc[var.no_outliers_df_and_Z['Embarked'] == 'Q', 'Embarked'] = 3
 
+
+var.no_outliers_df_and_Z.to_csv("Final_data_for_training_and_testing.csv")
 #print(var.no_outliers_df_and_Z['Parch'])
 
 training_parcentage = round(len(data) * 0.8)
@@ -71,8 +76,16 @@ clf = clf.fit(x_training, y_training)
 
 predictions = clf.predict(x_testing)
 
-print(accuracy_score(y_to_check, predictions))
+accuracy = accuracy_score(y_to_check, predictions)
+loss = log_loss(y_to_check, predictions)
 
-# print(var.training_set)
+tn, fp, fn, tp = confusion_matrix(y_to_check, predictions).ravel()
 
-# Example usage for classification
+y = np.array([tn, fp, fn, tp])
+labels = ['Negative adevarate', 'Pozitive false', 'Negative false', 'Pozitive adevarate']
+plt.pie(y, labels = labels)
+plt.savefig('Piechart_tn_fp_fn_tp.png')
+
+print(accuracy)
+print(loss)
+
