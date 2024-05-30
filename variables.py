@@ -1,3 +1,5 @@
+# Fisier comun pentru membrii echipei, fisier de variabile
+# Ghenescu Stefan si Beznea Mircea
 data = 0
 nr_lines = 0
 column_nr = 0

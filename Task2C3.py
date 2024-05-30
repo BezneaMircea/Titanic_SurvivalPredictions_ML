@@ -1,3 +1,7 @@
+# CopyRight(c):
+# Codul acesta este preluat de la colegul meu de proiect
+# dupa cum se cere in cerinta si foarte putin modificat de mine
+
 import pandas as pd
 import variables as var
 import matplotlib.pyplot as plt

@@ -8,7 +8,8 @@ def destroy_outliers(df, coloana):
 	IQR = percentile_Q3 - percentile_Q1
 	inf_lim = percentile_Q1 - 1.5 * IQR
 	sup_lim = percentile_Q3 + 1.5 * IQR
-
+# Vom elimina dupa criteriul din tema, practic valorile de la capetele
+# clopotului lui Gauss
 	no_outliers = df[(df[coloana] >= inf_lim) & (df[coloana] <= sup_lim)]
 	var.no_outliers_df = no_outliers
 
@@ -17,6 +18,6 @@ def destroy_outliers_with_z(df, coloana):
 	mean = df[coloana].mean()
 	inf_lim = mean - 3 * std_dev
 	sup_lim = mean + 3 * std_dev
-
+# Cele care au peste 3 deviatii standard vor fi eliminate
 	no_outliers = df[(df[coloana] >= inf_lim) & (df[coloana] <= sup_lim)]
 	var.no_outliers_df_and_Z = no_outliers
