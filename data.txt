@@ -1,0 +1,8 @@
+very young male survived:  29
+young male survived:  46
+middle aged male survived: 16
+old male survived: 2
+Very young people: 179
+Young people: 385
+Middle aged: 128
+Old people: 22
