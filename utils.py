@@ -15,8 +15,8 @@ def destroy_outliers(df, coloana):
 def destroy_outliers_with_z(df, coloana):
 	std_dev = df[coloana].std()
 	mean = df[coloana].mean()
-	inf_lim = mean - std_dev
-	sup_lim = mean + std_dev
+	inf_lim = mean - 3 * std_dev
+	sup_lim = mean + 3 * std_dev
 
 	no_outliers = df[(df[coloana] >= inf_lim) & (df[coloana] <= sup_lim)]
 	var.no_outliers_df_and_Z = no_outliers
