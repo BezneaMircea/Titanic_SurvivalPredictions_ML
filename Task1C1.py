@@ -1,5 +1,8 @@
 import pandas as pd
 import variables as var
+
+data_variables = open('data.txt', 'a+')
+
 # Citirea datelor
 data = pd.read_csv('train.csv')
 
@@ -35,3 +38,5 @@ var.Cabin_missing_count = data['Cabin'].isna().sum()
 var.Embarked_missing_count = data['Embarked'].isna().sum()
 
 var.found_duplicates = data.duplicated().sum()
+
+data_variables.close()
